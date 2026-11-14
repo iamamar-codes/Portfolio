@@ -110,6 +110,14 @@ window.PORTFOLIO = {
   contact: {
     email: "kushwahaamar104@gmail.com",
     location: "Sagar, Madhya Pradesh",
+    // "Say hello" form ke messages Google Form mein bhejne ke liye (optional).
+    // action khali ho to Send dabane par visitor ka email app khulta hai.
+    googleForm: {
+      action: "",  // e.g. "https://docs.google.com/forms/d/e/XXXX/formResponse"
+      name: "",    // e.g. "entry.123456"
+      email: "",   // e.g. "entry.234567"
+      message: ""  // e.g. "entry.345678"
+    },
     socials: [
       { label: "GitHub", url: "https://github.com/iamamar-codes" },
       { label: "LinkedIn", url: "https://www.linkedin.com/in/amar-kush" },

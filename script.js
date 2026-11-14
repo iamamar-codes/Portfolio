@@ -67,7 +67,47 @@
   const words = D.skillGroups.flatMap((g) => g.items.map((s) => s.name));
   for (let k = 0; k < 2; k++) words.forEach((w) => { const s = document.createElement("span"); s.textContent = w; mq.appendChild(s); });
 
-  $("#mailBtn").href = "mailto:" + D.contact.email;
+  // "Say hello" opens the contact form (name, email, message + Send)
+  const hello = $("#mailBtn"), modal = $("#helloModal"), form = $("#helloForm"), status = $("#helloStatus");
+  hello.href = "#contact";
+  const openModal = (e) => {
+    e.preventDefault();
+    status.textContent = ""; status.className = "form-status";
+    modal.classList.add("open"); modal.setAttribute("aria-hidden", "false");
+    setTimeout(() => form.elements.name.focus(), 100);
+  };
+  const closeModal = () => { modal.classList.remove("open"); modal.setAttribute("aria-hidden", "true"); };
+  hello.addEventListener("click", openModal);
+  $("#helloClose").addEventListener("click", closeModal);
+  modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
+  addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const name = form.elements.name.value.trim(), email = form.elements.email.value.trim(), message = form.elements.message.value.trim();
+    if (!name || !email || !message) return;
+    const g = D.contact.googleForm, send = $("#helloSend");
+    if (g && g.action) {
+      // Sends straight into your Google Form's responses (no page change)
+      const body = new URLSearchParams({ [g.name]: name, [g.email]: email, [g.message]: message });
+      send.disabled = true; status.className = "form-status"; status.textContent = "Sending…";
+      try {
+        await fetch(g.action, { method: "POST", mode: "no-cors", body });
+        status.textContent = "✓ Message sent — thank you!";
+        form.reset();
+      } catch (err) {
+        status.className = "form-status err";
+        status.textContent = "Could not send. Please email me at " + D.contact.email;
+      }
+      send.disabled = false;
+    } else {
+      // No Google Form connected: open the visitor's email app with the message filled in
+      const subject = "Portfolio message from " + name;
+      const text = message + "\n\n— " + name + "\n" + email;
+      location.href = "mailto:" + D.contact.email + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(text);
+      status.textContent = "Opening your email app — press send there to deliver it.";
+    }
+  });
   $("#location").textContent = "📍 " + D.contact.location + "  ·  ✉ " + D.contact.email;
   D.contact.socials.forEach((s) => {
     const a = document.createElement("a");
