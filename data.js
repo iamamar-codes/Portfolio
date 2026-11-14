@@ -103,7 +103,7 @@ window.PORTFOLIO = {
     ],
     samples: [
       { label: "@the.frame.soul", url: "https://www.instagram.com/the.frame.soul" },
-      { label: "@be.withshree", url: "https://www.instagram.com/be.withshree" }
+      { label: "@b.withshree", url: "https://www.instagram.com/b.withshree/" }
     ]
   },
 
