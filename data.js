@@ -63,8 +63,8 @@ window.PORTFOLIO = {
       tags: ["HTML", "CSS", "JavaScript"],
       category: "Web",
       image: "assets/project-eventhub.svg",
-      live: "",
-      code: "https://github.com/iamamar-codes/Event-Hub-"
+      live: "https://iamamar-codes.github.io/Event-Hub-/", // "Visit" link
+      code: "" // khali = Code link nahi dikhega
     },
     {
       title: "Online Internship Platform",

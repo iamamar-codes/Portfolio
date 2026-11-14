@@ -36,7 +36,7 @@
         h("p", null, p.desc),
         h("div", { className: "tags" }, p.tags.map((t) => h("span", { key: t }, t))),
         h("div", { className: "links" },
-          p.live && h("a", { href: p.live, ...ext(p.live) }, "Live demo ↗"),
+          p.live && h("a", { href: p.live, ...ext(p.live) }, "Visit ↗"),
           p.code && h("a", { href: p.code, ...ext(p.code) }, "Code ↗")
         )
       )
