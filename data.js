@@ -20,7 +20,7 @@ window.PORTFOLIO = {
   ],
 
   stats: [
-    { value: 2, suffix: "+", label: "Tech projects built" },
+    { value: 3, suffix: "+", label: "Tech projects built" },
     { value: 6, suffix: "+", label: "Technologies learned" },
     { value: 30, suffix: "", label: "Videos delivered in 30 days" },
     { value: 100, suffix: "%", label: "Eager to learn" }
@@ -57,6 +57,15 @@ window.PORTFOLIO = {
 
   // category se filter buttons bante hain
   projects: [
+    {
+      title: "Event Hub",
+      desc: "An event platform where anyone can organise their own events and book tickets for events they want to attend.",
+      tags: ["HTML", "CSS", "JavaScript"],
+      category: "Web",
+      image: "assets/project-eventhub.svg",
+      live: "",
+      code: "https://github.com/iamamar-codes/Event-Hub-"
+    },
     {
       title: "Online Internship Platform",
       desc: "A learning platform where students can take any short-duration course completely free of cost and earn a certificate on completion.",
