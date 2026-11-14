@@ -11,7 +11,7 @@ window.PORTFOLIO = {
 
   // Photo: portfolio/assets/photo.jpg
   photo: "assets/photo.jpg",
-  resume: "", // e.g. "assets/resume.pdf" — khali chhodo to button nahi dikhega
+  resume: "assets/Amar-Kushwaha-QA-Python-Resume.pdf", // main (QA + Python) resume — khali chhodo to button nahi dikhega
 
   about: [
     "Hi! I'm Amar, a Computer Science graduate (B.Tech, 2021–2025) from Sagar, Madhya Pradesh. I'm a fresher Python Developer and QA Engineer who enjoys building practical projects with Python and object-oriented programming, and making sure software is reliable before it reaches users.",
