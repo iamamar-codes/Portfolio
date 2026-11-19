@@ -6,21 +6,25 @@
   const D = window.PORTFOLIO;
   const ext = (url) => (url && url !== "#" ? { target: "_blank", rel: "noopener" } : {});
 
-  function Skills() {
-    return h(React.Fragment, null,
-      D.skillGroups.map((g) =>
-        h("div", { key: g.title, className: "skill-group" },
-          h("h3", { className: "group-title reveal" }, g.title),
-          h("div", { className: "skills-grid" },
-            g.items.map((s, i) =>
-              h("div", { key: s.name, className: "skill card reveal", style: { "--d": (i % 4) * 0.08 + "s" } },
-                h("div", { className: "skill-head" }, h("span", null, s.name), h("span", null, s.level + "%")),
-                h("div", { className: "bar" }, h("div", { className: "bar-fill", style: { "--lvl": s.level + "%" } }))
-              )
-            )
+  // One group of skill bars (used in Skills and in the Video Editing section)
+  function SkillGroup({ g }) {
+    return h("div", { className: "skill-group" },
+      h("h3", { className: "group-title reveal" }, g.title),
+      h("div", { className: "skills-grid" },
+        g.items.map((s, i) =>
+          h("div", { key: s.name, className: "skill card reveal", style: { "--d": (i % 4) * 0.08 + "s" } },
+            h("div", { className: "skill-head" }, h("span", null, s.name), h("span", null, s.level + "%")),
+            h("div", { className: "bar" }, h("div", { className: "bar-fill", style: { "--lvl": s.level + "%" } }))
           )
         )
       )
+    );
+  }
+
+  // Skills section: every group except the ones marked section: "editing"
+  function Skills() {
+    return h(React.Fragment, null,
+      D.skillGroups.filter((g) => g.section !== "editing").map((g) => h(SkillGroup, { key: g.title, g }))
     );
   }
 
@@ -105,6 +109,10 @@
             h("p", null, x.text)
           )
         )
+      ),
+      // Video editing skills, shown after the editing work
+      h("div", { className: "editing-skills" },
+        D.skillGroups.filter((g) => g.section === "editing").map((g) => h(SkillGroup, { key: g.title, g }))
       )
     );
   }

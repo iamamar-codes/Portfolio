@@ -220,6 +220,7 @@ h1 .name .ch {
 .reveal.in .bar-fill { width: var(--lvl); }
 
 .skill-group + .skill-group { margin-top: 44px; }
+.editing-skills { margin-top: 56px; }
 .group-title { font-size: 1.15rem; color: var(--mint); margin-bottom: 18px; display: flex; align-items: center; gap: 14px; }
 .group-title::after { content: ""; flex: 1; height: 1px; background: var(--line); }
 

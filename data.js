@@ -42,7 +42,8 @@ window.PORTFOLIO = {
       ]
     },
     {
-      title: "Video Editing",
+      title: "Video Editing Skills",
+      section: "editing", // shown in the Video Editing section instead of Skills
       items: [
         { name: "Adobe Premiere Pro", level: 85 },
         { name: "CapCut", level: 90 },
